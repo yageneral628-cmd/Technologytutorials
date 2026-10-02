@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 20th Horizon | iPhone 20 Pacific</title>
+    <style>
+        :root {
+            --pacific-deep: #001d3d;
+            --pacific-glow: #00b4d8;
+            --summer-gold: #ffb703;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'SF Pro Display', sans-serif; }
+
+        body {
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 20px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(20px);
+            z-index: 1000; border-bottom: 0.5px solid var(--glass-border);
+        }
+
+        .logo { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+        .nav-links button {
+            background: none; border: none; color: #aaa; margin-left: 30px;
+            cursor: pointer; font-size: 0.9rem; transition: 0.3s;
+        }
+        .nav-links button:hover { color: var(--pacific-glow); }
+
+        /* Pages */
+        .page { display: none; min-height: 100vh; padding-top: 100px; }
+        .active-page { display: block; }
+
+        /* Hero Section */
+        #hero { text-align: center; background: radial-gradient(circle at center, #002855 0%, #050505 70%); }
+        
+        .hero-content h1 {
+            font-size: 5rem; margin-top: 20px; letter-spacing: -2px;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* --- REALISTIC 3D iPHONE RENDER --- */
+        .phone-wrapper {
+            perspective: 1500px;
+            margin: 40px auto;
+            width: 320px;
+        }
+
+        .iphone-20 {
+            width: 300px; height: 620px;
+            background: #111;
+            border-radius: 45px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-10deg) rotateX(5deg);
+            border: 4px solid #333;
+            box-shadow: -20px 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0, 180, 216, 0.2);
+            transition: 0.5s ease;
+        }
+
+        .iphone-20:hover {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+        }
+
+        /* The Screen */
+        .screen {
+            position: absolute;
+            top: 8px; left: 8px; right: 8px; bottom: 8px;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            border-radius: 38px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Screen Shine/Reflection */
+        .screen::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(110deg, rgba(255,255,255,0.15) 20%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 55%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 15px; left: 50%;
+            transform: translateX(-50%);
+            width: 70px; height: 10px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Buttons */
+        .btn-side {
+            position: absolute; width: 3px; background: #333; border-radius: 2px;
+        }
+        .vol-up { height: 40px; left: -6px; top: 120px; }
+        .vol-down { height: 40px; left: -6px; top: 170px; }
+        .power { height: 60px; right: -6px; top: 150px; }
+
+        /* Content Grid */
+        .grid-container {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px; padding: 50px 10%;
+        }
+
+        .premium-card {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            padding: 35px; border-radius: 25px; backdrop-filter: blur(10px);
+            transition: 0.4s; text-align: left;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-10px); border-color: var(--pacific-glow);
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* Summer Details Section */
+        #details { background: #080808; padding: 50px 10%; }
+        .summer-header { border-left: 4px solid var(--summer-gold); padding-left: 20px; margin-bottom: 40px; }
+        .hidden-item {
+            background: linear-gradient(145deg, #111, #050505);
+            padding: 30px; border-radius: 20px; margin-bottom: 20px;
+            border: 1px solid #222;
+        }
+
+        footer { padding: 50px; text-align: center; color: #555; border-top: 1px solid #111; }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo">APPLE HORIZON</div>
+    <div class="nav-links">
+        <button onclick="showPage('hero')">PACIFIC ERA</button>
+        <button onclick="showPage('details')">SUMMER DETAILS</button>
+        <button style="border: 1px solid #fff; padding: 5px 15px; border-radius: 20px; color: #fff;">PRE-ORDER</button>
+    </div>
+</nav>
+
+<!-- PAGE 1: PACIFIC -->
+<section id="hero" class="page active-page">
+    <div class="hero-content">
+        <h1>iPhone 20</h1>
+        <p style="color: var(--pacific-glow); letter-spacing: 4px; font-weight: 300;">THE FUTURE IS PACIFIC BLUE</p>
+    </div>
+
+    <!-- IMPROVED REALISTIC iPHONE -->
+    <div class="phone-wrapper">
+        <div class="iphone-20">
+            <div class="btn-side vol-up"></div>
+            <div class="btn-side vol-down"></div>
+            <div class="btn-side power"></div>
+            <div class="screen">
+                <div class="dynamic-island"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="premium-card">
+            <h3 style="color: var(--pacific-glow); margin-bottom: 10px;">Liquid Titanium Frame</h3>
+            <p>A frame that's not just strong, but flexible at a molecular level. Experience the first self-healing iPhone.</p>
+        </div>
+        <div class="premium-card">
+            <h3 style="color: var(--pacific-glow); margin-bottom: 10px;">Under-Display Optics</h3>
+            <p>The camera lenses are invisible until you need them. A perfectly clean glass back for the first time.</p>
+        </div>
+        <div class="premium-card">
+            <h3 style="color: var(--pacific-glow); margin-bottom: 10px;">A20 Quantum Chip</h3>
+            <p>The world's first chip with 0.5nm architecture, delivering 10x more power with 50% less heat.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PAGE 2: SUMMER DETAILS -->
+<section id="details" class="page">
+    <div class="summer-header">
+        <h2 style="font-size: 2.5rem; color: var(--summer-gold);">Summer Hidden Details</h2>
+        <p>Revealing Apple's seasonal engineering secrets.</p>
+    </div>
+
+    <div class="hidden-item">
+        <h3 style="color: var(--summer-gold); margin-bottom: 10px;">01. Solar-Back Glass</h3>
+        <p>The "Summer" edition features a rear glass panel that absorbs ambient light to trickle-charge the battery. In peak summer, it can extend battery life by 4 hours daily.</p>
+    </div>
+
+    <div class="hidden-item">
+        <h3 style="color: var(--summer-gold); margin-bottom: 10px;">02. Intelligent Cooling</h3>
+        <p>A hidden detail in the chassis allows for "Breeze-In" cooling—micro-vents that open only when the phone detects high external temperatures during summer months.</p>
+    </div>
+
+    <div class="hidden-item">
+        <h3 style="color: var(--summer-gold); margin-bottom: 10px;">03. The Anniversary Engraving</h3>
+        <p>If you look at the bottom speakers with a macro lens, the year "2007-2027" is laser-etched inside the titanium mesh as a tribute to 20 years of innovation.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Apple Horizon Blog. For Concept Purposes Only.</p>
+</footer>
+
+<script>
+    function showPage(pageId) {
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active-page');
+        });
+        document.getElementById(pageId).classList.add('active-page');
+        window.scrollTo(0, 0);
+    }
+
+    // Interactive 3D Effect based on Mouse
+    const phone = document.querySelector('.iphone-20');
+    document.addEventListener('mousemove', (e) => {
+        let x = (window.innerWidth / 2 - e.pageX) / 25;
+        let y = (window.innerHeight / 2 - e.pageY) / 25;
+        phone.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+</script>
+
+</body>
+</html>
